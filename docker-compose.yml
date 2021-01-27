@@ -1,0 +1,20 @@
+version: '3'
+services:
+  firebase-emulator:
+    container_name: firebase-emulator
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    environment:
+      - PROJECT_ID= ${PROJECT_ID}
+    volumes:
+      - ./:/firebase-emulator
+    working_dir: /firebase-emulator
+    ports:
+      - '8088:8088'
+      - '4000:4000'
+      - '9099:9099'
+      - '5001:5001'
+      - '9000:9000'
+      - '8085:8085'
+    command: /bin/sh start.sh
